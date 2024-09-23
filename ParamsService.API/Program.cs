@@ -1,14 +1,8 @@
-using Microsoft.EntityFrameworkCore;
-using ParamsService.Infrastructure.Data;
-using ParamsService.Infrastructure;
-using ParamsService.Application;
-using Microsoft.AspNetCore.Builder.Extensions;
-using MMCEventsV1.Middlewares;
-using ParamsService.API.Services;
-using ParamsService.Application.Interfaces;
-using ParamsService.Application.Services;
-using Microsoft.AspNetCore.Hosting;
 using Azure.Storage.Blobs;
+using Microsoft.EntityFrameworkCore;
+using ParamsService.API.Services;
+using ParamsService.Application;
+using ParamsService.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddSingleton(x => new BlobServiceClient(builder.Configuration.GetConnectionString("StorageAccount")));
@@ -45,10 +39,10 @@ var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
 }
 
+app.UseSwagger();
+app.UseSwaggerUI();
 app.UseHttpsRedirection();
 app.UseAuthorization();
 
