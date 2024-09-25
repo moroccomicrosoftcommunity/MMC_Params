@@ -1,14 +1,7 @@
-﻿using System;
-using System.Text;
-using System.Text.Json;
-using System.Text.Json.Nodes;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using ParamsService.API.Services;
+﻿using ParamsService.API.Services;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using System.Text;
 
 public class NotificationsServer : INotificationsServer
 {
