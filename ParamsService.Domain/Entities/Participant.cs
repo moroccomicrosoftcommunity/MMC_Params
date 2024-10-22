@@ -16,6 +16,6 @@ namespace ParamsService.Domain.Entities
         public string? Phone { get; set; }
         public string? Gender { get; set; }
         public string? City { get; set; }
-        
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
     }
 }

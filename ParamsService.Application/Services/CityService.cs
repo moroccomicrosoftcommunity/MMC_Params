@@ -19,7 +19,7 @@ public class CityService : ICityService
 
     public async Task<CityGetDto> FindAsync(Guid id)
     {
-        var city = await _uow.CityRepository.GetAsync(id,c=>c.Participants);
+        var city = await _uow.CityRepository.GetAsync(id);
 
         if (city is null) return null;
 
@@ -27,11 +27,10 @@ public class CityService : ICityService
     }
     public async Task<IEnumerable<CityGetDto>> FindAllAsync()
     {
-        var cities = await _uow.CityRepository.GetAllAsync(c =>c.Participants);
-
+        var cities = await _uow.CityRepository.GetAllAsync();
         if (cities is null) return null;
-
-        return _map.Map<IEnumerable<CityGetDto>>(cities);
+        var orderedCities = cities.OrderBy(city => city.Name).ToList();
+        return _map.Map<IEnumerable<CityGetDto>>(orderedCities);
     }
     public async Task<CityGetDto> CreateAsync(CityCreateDto cityPostDTO)
     {

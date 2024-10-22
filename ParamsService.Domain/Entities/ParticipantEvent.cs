@@ -12,5 +12,6 @@ namespace ParamsService.Domain.Entities
         public Guid Id_Event { get; set;}
         public Guid Id_Participant { get; set; }
         public bool IsParticipated { get; set; } = false;
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
     }
 }
